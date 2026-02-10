@@ -93,6 +93,8 @@ input[type='text'] {
     background: url('car1.png') no-repeat center/contain;
     z-index: 5;
     transition: left 0.05s linear;
+    /* transition: left 0.1s linear; */
+    will-change: left;
 }
 
 .game-object {
