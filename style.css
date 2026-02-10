@@ -1,0 +1,121 @@
+@font-face {
+    font-family: 'GameFont';
+    src: url('10558.ttf');
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
+
+body {
+    font-family: 'GameFont', sans-serif;
+    overflow: hidden;
+    background: #f0f0f0;
+}
+
+/* Общие стили экранов */
+.screen {
+    display: none;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    left: 0; top: 0;
+}
+
+.screen-active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.95);
+    z-index: 100;
+}
+
+/* Стили стартового экрана и рейтинга */
+h1 { font-size: 48px; margin-bottom: 20px; color: #333; }
+.intro-text { text-align: left; margin-bottom: 30px; font-size: 20px; }
+.intro-text ul { margin-top: 10px; }
+.intro-text li { margin-bottom: 5px; }
+
+input[type='text'] {
+    padding: 10px;
+    font-size: 20px;
+    border: 2px solid #778d94;
+    border-radius: 5px;
+    outline: none;
+}
+
+.btn-main {
+    margin-top: 20px;
+    padding: 10px 30px;
+    font-size: 22px;
+    background: #778d94;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+.btn-main:hover { background: #5a6b70; }
+
+/* Экран игры */
+.screen-game {
+    background: url('bg-game.jpg') no-repeat center center;
+    background-size: cover;
+    display: none; /* Скрыт по умолчанию */
+}
+
+/* HUD (Интерфейс) */
+.hud {
+    position: absolute;
+    top: 20px;
+    color: white;
+    font-size: 24px;
+    text-shadow: 2px 2px 0 #000;
+    z-index: 10;
+}
+.hud-left { left: 20px; }
+.hud-right { right: 20px; text-align: right; }
+
+.hearts img { width: 30px; margin-right: 5px; }
+
+/* Игровые объекты */
+#game-area {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.player-car {
+    position: absolute;
+    bottom: 20px;
+    width: 80px;
+    height: 120px;
+    background: url('car1.png') no-repeat center/contain;
+    z-index: 5;
+    transition: left 0.05s linear;
+}
+
+.game-object {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    z-index: 4;
+}
+.obj-pothole { background-image: url('bank1.png'); }
+.obj-tool { background-image: url('bank2.png'); }
+
+/* Таблица рейтинга */
+.table-container {
+    width: 60%;
+    max-height: 50vh;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+}
+table { width: 100%; border-collapse: collapse; }
+th { background: #778d94; color: white; padding: 10px; position: sticky; top: 0; }
+td { padding: 10px; border-bottom: 1px solid #ddd; text-align: center; font-size: 18px; }
+tr.current-player { background-color: #d1e7dd; font-weight: bold; border: 2px solid #0f5132; }
